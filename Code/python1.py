@@ -35,7 +35,13 @@
 	# What was the name of the function we have seen to check the length of a container?  Use your CLI to access the Python documentation and get help(len).
 
 def one(input1, input2):
-	return ""
+    if len(input1) > len(input2):
+        return input1
+    elif len(input2) > len(input1):
+        return input2 
+    elif len(input1) == len(input2):
+        return input1 + " "+ input2
+	
 
 
 
@@ -63,9 +69,12 @@ def one(input1, input2):
 	# Use your CLI to access the Python documentation and get help manipulating strings - help(str).
 
 def two(input):
-	return ""
+    input = input.lower()
+    start = "bert"
+    end = "bert"
+    return input[input.find(start)+len(start):input.rfind(end)]
 
-
+print(two("bertclivebert"))
 
 
 	# <QUESTION 3>
@@ -88,7 +97,22 @@ def two(input):
 	# No Hints for this question
 
 def three(arg1):
-	return "null"
+    
+    if((arg1 %3==0) and (arg1 %5 ==0)):
+        return "fizzbuzz"
+    elif(arg1 % 3 ==0):
+        return "fizz"
+    elif(arg1 % 5 == 0 ):
+        return "buzz"
+    else:
+        return "null"
+    
+    
+    
+    
+    
+    
+
 
 
 	# <QUESTION 4>
@@ -114,8 +138,16 @@ def three(arg1):
 	# help(int) for working with numbers and help(str) for working with Strings.
 
 def four(arg1):
-	return 0
+    input= arg1.split(" ")
+    h=0
+    for num in input:
+        res= [int(i) for i in num]
+     #   res = sum()
+        if (sum(res) > h):
+            h = sum(res)
+    return h
 
+#print(four("55 72 86"))
 	# <QUESTION 5>
 
     # Given a large string that represents a csv, the structure of each record will be as follows:
@@ -163,7 +195,14 @@ def five(input):
 
 
 def six(input):
-    return False
+    input = input.lower()
+    if "cie" in input :
+        return False
+    elif "cei" in input:
+        return True
+    elif "ie" in input:
+        return True
+        
 
 	# <QUESTION 7>
 
@@ -180,7 +219,14 @@ def six(input):
 	# How do we ignore case in a String? help(str) may offer some insight.
 
 def seven(input):
-    return 0
+    input_sanitized = input.lower()
+    vowels = ["a","e","i","o","u"]
+    result = 0
+    for char in input_sanitized:
+        if char in vowels:
+            result+=1
+      
+    return result
 
 	# <QUESTION 8>
 
@@ -198,7 +244,12 @@ def seven(input):
 	# You may need to create a list of numbers from 0 to i, take a look at help(range).
 
 def eight(input):
-	return 1
+    #take input and create range 
+    in_range = range(1,input)
+    result = input 
+    for mul in in_range:
+        result *= mul
+    return result
 
 	# <QUESTION 9>
 
@@ -219,7 +270,14 @@ def eight(input):
 	# Take a look at the documentation for Strings, List and range.
 
 def nine(inputString, char):
-	return -1
+    input = inputString.replace(" ","")
+    x = input.find(char)
+    if x == -1:
+        return -1
+    else: 
+        return x +1
+
+
 
 	# <QUESTION 10>
 
@@ -239,4 +297,12 @@ def nine(inputString, char):
 	# How do we find the length of a container, take a look at help(len), you will also need to look at help(str) for String manipulation.
  
 def ten(string, int, char):
-	return False
+    sanitized_str = string.lower()
+    if(int <= len(sanitized_str)):
+        if (sanitized_str[int-1] == char):
+            return True
+        else:
+            return False
+    else:
+        return False
+    
